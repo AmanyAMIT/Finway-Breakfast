@@ -1,3 +1,13 @@
 {
-    "sentence":"this is local file"
+    "Employees": {
+        "Amany": [
+            {"sandwich":"فول", "quantity":1},
+            {"sandwich":"اومليت رومي", "quantity":1},
+            {"sandwich":"بطاطس كاتشب مايونيز", "quantity":1}
+        ],
+        "Nourhan": [
+            {"sandwich":"فول", "quantity":2},
+            {"sandwich":"بطاطس طحينة بس", "quantity":1}
+        ]
+    }
 }
