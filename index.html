@@ -86,7 +86,7 @@
                <div class="text-bg">
                   <h1>Healthy Food Recipes</h1>
                   <p>There are many variations of passages of Lorem Ipsum available, but the majorityomised words which don't look even slightly believable</p>
-                  <a class="read_more" href="#">Read More</a>
+                  <a class="read_more" href="Final-Order.html">Read More</a>
                </div>
             </div>
             <div class="col-md-6">
@@ -312,61 +312,6 @@
       <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
       <script src="js/custom.js"></script>
       <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
-      <script>
-         //var arr = [];
-         var sandwiches = [],
-            quantity = [],
-            indices = [];
-         fetch("JSON.json")
-         .then(Response => Response.json())
-         .then(data =>{
-            for(var make in data.Employees){
-               for (var i = 0; i < data.Employees[make].length; i++) {
-                  sandwiches.push(data.Employees[make][i].sandwich);
-                  quantity.push(data.Employees[make][i].quantity);
-                  //var quantity = data.Employees[make][i].quantity;
-                 // const hasDuplicates = (arr) => arr.length !== new Set(arr).size;
-            // for (var make in data.Employees) {
-            //    for (var i = 0; i < data.Employees[make].length; i++) {
-            //       var sandwiches = data.Employees[make][i].sandwich;
-            //       var quantity = data.Employees[make][i].quantity;
-            //       console.log(make + ', ' + sandwiches + ', ' + quantity);
-            //       console.log(hasDuplicates(data.Employees[make][i].quantity))
-            //    }
-            // }
-               }
-            }
-            const set = new Set(sandwiches);
-                  const duplicates = sandwiches.filter(item => {
-                     if (set.has(item)) {
-                        set.delete(item);
-                     } else {
-                        return item;
-                     }
-                  });
-                  function duplicateIndexes(arr, el) {
-
-                     duplicate = [];
-                     for (let i = 0; i < arr.length; i++) {
-                        if (arr[i] == el) {
-                           duplicate.push(i)
-                        }
-                     }
-                     return duplicate
-                  }
-            let indices = duplicateIndexes(sandwiches, duplicates);
-            console.log(sandwiches);
-            console.log(quantity);
-            console.log(indices);
-            console.log(duplicates);
-            for(let q = 0; q < quantity.length; q++){
-                  console.log(quantity[q])
-            }
-            for(let qqq = 0; qqq < indices.length; qqq++){
-                  console.log(indices[qqq])
-            }
-         })
-      </script>
    
    </body>
 </html>
