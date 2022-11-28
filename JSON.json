@@ -8,6 +8,9 @@
         "Nourhan": [
             {"sandwich":"فول", "quantity":2},
             {"sandwich":"بطاطس طحينة بس", "quantity":1}
+        ],
+        "Hady":[
+            {"sandwich":"فول", "quantity":2}
         ]
     }
 }

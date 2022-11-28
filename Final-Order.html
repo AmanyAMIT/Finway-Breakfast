@@ -1,26 +1,135 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-</head>
-<body>
-    <div>
-        <button onclick="loadAPI()">Test</button>
-    </div>
-
-    <script>
-        function loadAPI(){
-            fetch('http://localhost:3000/Employees')
-                .then(function(response) {
-                    return response.json();
-                })
-                .then((response) => {
-                    console.log(response.Amany)
-                })
+    <!-- bootstrap css -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <!-- style css -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Responsive-->
+    <link rel="stylesheet" href="css/responsive.css">
+    <style>
+        .works .works_box h4 {
+            font-size: 25px;
+            line-height: 30px;
+            font-weight: bold;
+            color: #fff;
+            background: #5a2f27;
+            width: 142px;
+            text-align: center;
+            border-radius: 50px;
+            height: 80px;
+            padding-top: 26px;
+            margin-left: -50px;
+            margin-top: -30px;
+            position: absolute;
         }
+    </style>
+</head>
+
+<body>
+    <!-- works -->
+    <div class="works">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="titlepage">
+                        <h2> <strong class="yellow">Final </strong>Order</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6=12">
+                    <div id="white_bg" class="works_box">
+                        <h4 id="Today">
+                            <script>
+                                var today = new Date();
+                                var dd = String(today.getDate()).padStart(2);
+                                var mm = String(today.getMonth() + 1).padStart(2);
+                                var yyyy = today.getFullYear();
+                                today = mm + '-' + dd + '-' + yyyy;
+                                document.getElementById("Today").innerHTML = today;
+                            </script>
+                        </h4>
+                        <table>
+                            <thead>
+                                <th>#</th>
+                                <th>Sandwiches</th>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end works -->
+    <script src="./js/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            let names = [],
+                sandwiches = [],
+                quantity = [],
+                duplicate = [];
+            fetch('http://localhost:3000/Employees')
+                .then(response => response.json())
+                .then(response => {
+                    for (var make in response) {
+                        names.push(make);
+                        for (var i = 0; i < response[make].length; i++) {
+                            sandwiches.push(response[make][i].sandwich);
+                            quantity.push(response[make][i].quantity);
+                        }
+                    }
+                    const set = new Set(sandwiches);
+                    const duplicates = sandwiches.filter(item => {
+                        if (set.has(item)) {
+                            set.delete(item);
+                        } else {
+                            return item;
+                        }
+                    });
+                    function duplicateIndexes(arr, el) {
+                        for (let i = 0; i < arr.length; i++) {
+                            if (arr[i] == el) {
+                                duplicate.push(i);
+                            }
+                        }
+                        return duplicate;
+                    }
+                    let indices = duplicateIndexes(sandwiches, duplicates);
+                    let sum = 0;
+                    console.log(response);
+                    console.log(sandwiches);
+                    console.log(quantity);
+                    console.log(duplicateIndexes(sandwiches, duplicates));
+                    console.log(duplicates);
+                    for (let ind = 0; ind < indices.length; ind++) {
+                        console.log(sum += quantity[indices.at(ind)])
+                    }
+                })
+        });
+
+        // function AddAPI() {
+        //     $.ajax({
+        //         method: "POST",
+        //         url: "http://localhost:3000/Employees",
+        //         data: NewData,
+        //         success: (POSTReq) => {
+        //             console.log("Posted successfully")
+        //         },
+        //         error: (POSTReq) => {
+        //             console.log("Failed")
+        //         }
+        //     })
+        // }
     </script>
 </body>
+
 </html>
